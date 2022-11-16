@@ -11,13 +11,16 @@ repositories {
 // получаем библиотеки: selenide - для запуска браузера, junit - фреймворк для запуска автотестов
 dependencies {
     testImplementation (
-            'com.codeborne:selenide:5.20.3',
-            'org.junit.jupiter:junit-jupiter-api:5.7.1'
+            'com.codeborne:selenide:6.9.0',
+            'org.junit.jupiter:junit-jupiter:5.9.0'
     )
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+    testRuntimeOnly (
+            'org.junit.jupiter:junit-jupiter-engine:5.9.0',
+            'org.slf4j:slf4j-simple:2.0.3'
+    )
 }
 
-// указание какой junit использовать
+// указание какой junit использовать (в данном случае junit 5)
 test {
-    useJUnitPlatform()
+    useJUnitPlatform() // бывают еще junit 4 и testNG
 }
