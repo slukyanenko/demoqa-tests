@@ -1,0 +1,23 @@
+// объявили, что используется язык джава
+plugins {
+    id 'java-library'
+}
+
+// mavenCentral - репохиторий, откуда берем зависимости
+repositories {
+    mavenCentral()
+}
+
+// получаем библиотеки: selenide - для запуска браузера, junit - фреймворк для запуска автотестов
+dependencies {
+    testImplementation (
+            'com.codeborne:selenide:5.20.3',
+            'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    )
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+}
+
+// указание какой junit использовать
+test {
+    useJUnitPlatform()
+}
