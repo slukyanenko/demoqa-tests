@@ -1,22 +1,36 @@
 // объявили, что используется язык джава
 plugins {
-    id 'java-library'
+    id 'java'
 }
+
+// Объявляем используемую версию джавы. Лучше использовать версию LTS, она
+// долго поддерживается
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
 
 // mavenCentral - репохиторий, откуда берем зависимости
 repositories {
     mavenCentral()
 }
 
+// Необязательный параметр, для избежания проблем с кодировкой
+compileTestJava {
+    options.encoding("UTF-8")
+}
+
 // получаем библиотеки: selenide - для запуска браузера, junit - фреймворк для запуска автотестов
 dependencies {
     testImplementation (
-            'com.codeborne:selenide:6.9.0',
-            'org.junit.jupiter:junit-jupiter:5.9.0'
+            'com.codeborne:selenide:6.9.0', // Selenide
+            'org.junit.jupiter:junit-jupiter:5.9.0' // JUnit
     )
     testRuntimeOnly (
-            'org.junit.jupiter:junit-jupiter-engine:5.9.0',
-            'org.slf4j:slf4j-simple:2.0.3'
+            'org.junit.jupiter:junit-jupiter-engine:5.9.0', // JUnit
+            'org.slf4j:slf4j-simple:2.0.3' // расширенное логирование селенида
     )
 }
 
